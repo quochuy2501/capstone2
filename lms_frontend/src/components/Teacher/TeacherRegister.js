@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useEffect,useState } from "react";
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 const baseUrl='http://127.0.0.1:8000/api/teacher/';
 function TeacherRegister(){
+    const navigate=useNavigate();
     const [teacherData, setteacherData]=useState({
         'full_name':'',
         'email':'',
@@ -11,7 +13,8 @@ function TeacherRegister(){
         'qualification':'',
         'mobile_no':'',
         'skills':'',
-        'status':''
+        'status':'',
+        'otp_digit':'',
     });
     // Change Element value
     const handleChange=(event)=>{
@@ -25,6 +28,7 @@ function TeacherRegister(){
 
     //Submit Form
     const submitForm=()=>{
+        const otp_digit=Math.floor(100000 + Math.random() * 900000)
         const teacherFormData=new FormData();
         teacherFormData.append("full_name", teacherData.full_name)
         teacherFormData.append( "email", teacherData.email)
@@ -32,18 +36,12 @@ function TeacherRegister(){
         teacherFormData.append("qualification", teacherData.qualification)
         teacherFormData.append("mobile_no", teacherData.mobile_no)
         teacherFormData.append("skills", teacherData.skills)
+        teacherFormData.append("otp_digit", otp_digit)
 
         try{
             axios.post(baseUrl,teacherFormData).then((response)=>{
-                setteacherData({
-                    'full_name':'',
-                    'email':'',
-                    'password':'',
-                    'qualification':'',
-                    'mobile_no':'',
-                    'skills':'',
-                    'status':'success'
-                });
+                console.log(response.data)
+                navigate('/verify-teacher/'+response.data.id)
             });
         }catch(error){
             console.log(error);
@@ -52,10 +50,9 @@ function TeacherRegister(){
     };
     //End
 
-    const teacherLoginStatus=localStorage.getItem('teacherLoginStatus')
-    if(teacherLoginStatus=='true'){
-        window.location.href='teacher-dashboard';
-    }  
+    useEffect(()=>{
+        document.title="Teacher Register"
+    });   
 
     return (
         <div className="container mt-4">

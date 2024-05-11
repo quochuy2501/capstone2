@@ -3,6 +3,7 @@ import TeacherSidebar from "./TeacherSidebar";
 import {useState,useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const baseUrl='http://127.0.0.1:8000/api';
 
@@ -21,7 +22,7 @@ function AddChapter(){
         });
     }
 
-    const handleFileChange=(event)=>{
+    const handleFileChange=(event)=>{  
         setChapterData({
             ...chapterData,
             [event.target.name]:event.target.files[0]
@@ -37,15 +38,26 @@ function AddChapter(){
         _formData.append('description',chapterData.description);
         _formData.append('video',chapterData.video,chapterData.video.name);
         _formData.append('remarks',chapterData.remarks);
+
         try{
-            axios.post(baseUrl+'/chapter/',_formData,{
+            axios.post(baseUrl+'/course-chapters/'+course_id,_formData,{
                 headers: {
                     'content-type': 'multipart/form-data'
                 }
             })
             .then((res)=>{
-                // console.log(res.data); 
-                window.location.href='/add-chapter/1';
+                if(res.status==200||res.status==201){
+                    Swal.fire({
+                        title: 'Data has been added',
+                        icon: 'success',
+                        toast:true,
+                        timer:3000,
+                        position:'top-right',
+                        timerProgressBar:true,
+                        showConfirmButton:false
+                    });
+                    window.location.reload();
+                }
             });
         }catch(error){
             console.log(error);

@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useEffect,useState } from "react";
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 const baseUrl='http://127.0.0.1:8000/api';
 function TeacherLogin(){
+    const navigate=useNavigate();
     const [teacherLoginData, setteacherLoginData]=useState({
         email:'',
         password:''
@@ -20,18 +22,22 @@ function TeacherLogin(){
     }
 
     const submitForm=()=>{
-        const teacherFormData=new FormData;
+        const teacherFormData=new FormData();
         teacherFormData.append('email',teacherLoginData.email)
         teacherFormData.append('password',teacherLoginData.password)
         try{
             axios.post(baseUrl+'/teacher-login',teacherFormData)
             .then((res)=>{
                 if(res.data.bool==true){
-                    localStorage.setItem('teacherLoginStatus',true);
-                    localStorage.setItem('teacherId',res.data.teacher_id);
-                    window.location.href='/teacher-dashboard';
+                    if(res.data.login_via_otp==true){
+                        navigate('/verify-teacher/'+res.data.teacher_id);
+                    }else{
+                        localStorage.setItem('teacherLoginStatus',true);
+                        localStorage.setItem('teacherId',res.data.teacher_id);
+                        navigate('/teacher-dashboard');                
+                    }                   
                 }else{
-                    seterrorMsg('Invalid Email or Password!!');
+                    seterrorMsg(res.data.msg);
                 }   
             });
         }catch(error){
@@ -56,7 +62,6 @@ function TeacherLogin(){
                         <h5 className="card-header">Teacher Login</h5>
                         <div className="card-body">
                             {errorMsg && <p className="text-danger">{errorMsg}</p>}
-                            {/* <form> */}
                                 <div className="mb-3">
                                     <label for="exampleInputEmail1" className="form-label">Email</label>
                                     <input type="email" value={teacherLoginData.email} onChange={handleChange} name="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />                                    
@@ -70,7 +75,7 @@ function TeacherLogin(){
                                     <label className="form-check-label" for="exampleCheck1">Remember Me</label>
                                 </div> */}
                                 <button type="submit" onClick={submitForm}  className="btn btn-primary">Login</button>
-                            {/* </form> */}
+                                <p className="mt-3"><Link to="/teacher-forgot-password" className="text-danger">Forgot Password?</Link></p>
                         </div>
                     </div>
                 </div>

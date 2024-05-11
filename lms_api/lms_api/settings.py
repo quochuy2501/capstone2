@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -44,6 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'lms_api.urls'
@@ -119,6 +125,8 @@ REST_FRAMEWORK={
     'DEFAULT_AUTHENTICATION_CLASSES':[
         'rest_framework.authentication.TokenAuthentication',
     ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    # 'PAGE_SIZE': 100,
 }   
 
 # Internationalization
@@ -150,3 +158,9 @@ CORS_ALLOW_ALL_ORIGINS=True
 
 MEDIA_URL= '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')   
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]

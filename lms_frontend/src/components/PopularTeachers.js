@@ -18,7 +18,7 @@ function PopularTeachers(){
         <div className="row mb-4">
             <div className="col-md-3 mb-4">
                 <div className="card">
-                    <Link to="/detail/1"><img src="teacher.jpg" className="card-img-top" alt="..." /></Link>
+                    <Link to="/detail/1"><img src="teacher (1).jpg" className="card-img-top" alt="..." /></Link>
                     <div className="card-body">
                         <h5 className="card-title"><Link to="/teacher-detail/1">Teacher Name</Link></h5>
                     </div>
@@ -32,7 +32,7 @@ function PopularTeachers(){
             </div>  
             <div className="col-md-3 mb-4">
                 <div className="card">
-                    <Link to="/detail/1"><img src="teacher.jpg" className="card-img-top" alt="..." /></Link>
+                    <Link to="/detail/1"><img src="teacher (2).jpg" className="card-img-top" alt="..." /></Link>
                     <div className="card-body">
                         <h5 className="card-title"><Link to="/teacher-detail/1">Teacher Name</Link></h5>
                     </div>
@@ -46,7 +46,7 @@ function PopularTeachers(){
             </div> 
             <div className="col-md-3 mb-4">
                 <div className="card">
-                    <Link to="/detail/1"><img src="teacher.jpg" className="card-img-top" alt="..." /></Link>
+                    <Link to="/detail/1"><img src="teacher (3).jpg" className="card-img-top" alt="..." /></Link>
                     <div className="card-body">
                         <h5 className="card-title"><Link to="/teacher-detail/1">Teacher Name</Link></h5>
                     </div>
@@ -60,7 +60,7 @@ function PopularTeachers(){
             </div> 
             <div className="col-md-3 mb-4">
                 <div className="card">
-                    <Link to="/detail/1"><img src="teacher.jpg" className="card-img-top" alt="..." /></Link>
+                    <Link to="/detail/1"><img src="teacher (4).jpg" className="card-img-top" alt="..." /></Link>
                     <div className="card-body">
                         <h5 className="card-title"><Link to="/teacher-detail/1">Teacher Name</Link></h5>
                     </div>
@@ -74,7 +74,7 @@ function PopularTeachers(){
             </div> 
             <div className="col-md-3 mb-4">
                 <div className="card">
-                    <Link to="/detail/1"><img src="teacher.jpg" className="card-img-top" alt="..." /></Link>
+                    <Link to="/detail/1"><img src="teacher (5).jpg" className="card-img-top" alt="..." /></Link>
                     <div className="card-body">
                         <h5 className="card-title"><Link to="/teacher-detail/1">Teacher Name</Link></h5>
                     </div>
@@ -88,7 +88,7 @@ function PopularTeachers(){
             </div>  
             <div className="col-md-3 mb-4">
                 <div className="card">
-                    <Link to="/detail/1"><img src="teacher.jpg" className="card-img-top" alt="..." /></Link>
+                    <Link to="/detail/1"><img src="teacher (6).jpg" className="card-img-top" alt="..." /></Link>
                     <div className="card-body">
                         <h5 className="card-title"><Link to="/teacher-detail/1">Teacher Name</Link></h5>
                     </div>
@@ -102,7 +102,7 @@ function PopularTeachers(){
             </div>  
             <div className="col-md-3 mb-4">
                 <div className="card">
-                    <Link to="/detail/1"><img src="teacher.jpg" className="card-img-top" alt="..." /></Link>
+                    <Link to="/detail/1"><img src="teacher (1).jpg" className="card-img-top" alt="..." /></Link>
                     <div className="card-body">
                         <h5 className="card-title"><Link to="/teacher-detail/1">Teacher Name</Link></h5>
                     </div>
@@ -116,7 +116,7 @@ function PopularTeachers(){
             </div> 
             <div className="col-md-3 mb-4">
                 <div className="card">
-                    <Link to="/detail/1"><img src="teacher.jpg" className="card-img-top" alt="..." /></Link>
+                    <Link to="/detail/1"><img src="teacher (2).jpg" className="card-img-top" alt="..." /></Link>
                     <div className="card-body">
                         <h5 className="card-title"><Link to="/teacher-detail/1">Teacher Name</Link></h5>
                     </div>
